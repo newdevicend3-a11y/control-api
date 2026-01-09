@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect</title>
+</head>
+<body>
+    <script>
+        // Example of redirect logic (basic IP validation via external service)
+        fetch('https://api.ipstack.com/check?access_key=ef2f3af2566718c318706a424789d883')
+            .then(response => response.json())
+            .then(data => {
+                if (data.type === 'vpn' || data.is_proxy) {
+                    window.location.href = 'https://www.gmail.com';
+                } else {
+                    window.location.href = 'https://www.youtube.com';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                window.location.href = 'https://www.microsoft.com';
+            });
+    </script>
+</body>
+</html>
